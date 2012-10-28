@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Guard::Remote::VERSION
   gem.authors       = ["Miguel Cabeça"]
   gem.email         = ["miguelcabeca@gmail.com"]
-  gem.description   = %q{Guard plugin to sync your changes to a remote server via SFTP}
   gem.summary       = %q{Guard plugin to sync your changes to a remote server via SFTP}
+  gem.description   = %q{Guard plugin to sync your changes to a remote server via SFTP. Heavily inspired by guard-flopbox. This gem is experimental. It works for me but it may eat all your data, as it has file deletion logic that isn't much tested. You have been warned.}
   gem.homepage      = "https://github.com/cabeca/guard-remote"
 
   gem.files         = `git ls-files`.split($/)
@@ -17,5 +17,5 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.spec.add_dependency 'net-sftp'
+  gem.add_dependency 'net-sftp'
 end
