@@ -1,11 +1,10 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'guard/remote/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "guard-remote"
-  gem.version       = Guard::Remote::VERSION
+  gem.version       = "0.0.1"
   gem.authors       = ["Miguel Cabeça"]
   gem.email         = ["miguelcabeca@gmail.com"]
   gem.summary       = %q{Guard plugin to sync your changes to a remote server via SFTP}
