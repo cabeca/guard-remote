@@ -8,6 +8,7 @@ This gem is **experimental**. It works for me but it may eat all your data, as i
  - Removes deleted files including deleted directories
 
 ## TODO
+ - Remove mandatory username from configuration. Get the current username.
  - Handle disconnections and network problems gracefully
  - Implement some kind of exclude list (`git ls-files` maybe?)
 
