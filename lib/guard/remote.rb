@@ -1,10 +1,10 @@
 require 'guard'
 require 'guard/guard'
 require 'net/sftp'
+require 'guard/remote/version'
 
 module Guard
   class Remote < Guard
-    VERSION = "0.0.1"
 
     attr_reader :sftp_session, :remote, :pwd
 
