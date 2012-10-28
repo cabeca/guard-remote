@@ -8,7 +8,6 @@ This gem is **experimental**. It works for me but it may eat all your data, as i
  - Removes deleted files including deleted directories
 
 ## TODO
- - Remove mandatory username from configuration. Get the current username.
  - Handle disconnections and network problems gracefully
  - Implement some kind of exclude list (`git ls-files` maybe?)
 
@@ -34,19 +33,25 @@ Then edit Guardfile to suit your needs. Here is the example snippet added:
 
 ```ruby
   # Configuration Options for guard-remote
-  opts = {
-    :hostname  => "example.com",         # remote host 
-    :user      => "username",            # remote user
-    :sftp_opts => {},                    # options passed to Net::SFTP
-    :remote    => "test",                # remote directory
-    :debug     => true,                  # output debug information
-  }
-
-  group 'remote' do
-    guard 'remote', opts do
-      watch(/.*/)
-    end
+  # minimal configuration:
+  guard 'remote', hostname: 'example.com', remote: 'test' do
+    watch(/.*/)
   end
+
+  # # complete configuration:
+  # opts = {
+  #   :hostname  => 'example.com', # mandatory: remote host 
+  #   :remote    => 'test',        # mandatory: remote directory
+  #   :user      => 'username',    # optional: remote user, defaults to current user
+  #   :sftp_opts => {},            # optional: options passed to Net::SFTP, defaults to {}
+  #   :debug     => true,          # optional: output debug information, defaults to false
+  # }
+
+  # group 'remote' do
+  #   guard 'remote', opts do
+  #     watch(/.*/)
+  #   end
+  # end
 ```
 You need to have ssh public key login enabled for the specified hostname.
 

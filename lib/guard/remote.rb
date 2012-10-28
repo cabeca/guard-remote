@@ -1,6 +1,7 @@
 require 'guard'
 require 'guard/guard'
 require 'net/sftp'
+require 'etc'
 
 module Guard
   class Remote < Guard
@@ -11,6 +12,12 @@ module Guard
     # @param [Array<Guard::Watcher>] watchers the Guard file watchers
     # @param [Hash] options the custom Guard options
     def initialize(watchers = [], options = {})
+      raise "You must specify :hostname in options." unless options[:hostname]
+      raise "You must specify :remote in options." unless options[:remote]
+      options[:user] = Etc.getlogin unless options[:user]
+      options[:sftp_opts] = {} unless options[:sftp_opts]
+      options[:debug] = false unless options[:debug]
+
       @sftp_session = Net::SFTP.start(options[:hostname], options[:user], options[:sftp_opts])
       @remote       = options[:remote]
       @debug        = options[:debug]
