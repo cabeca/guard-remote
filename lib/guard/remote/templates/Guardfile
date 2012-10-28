@@ -1,0 +1,14 @@
+# Configuration Options for guard-remote
+opts = {
+  :hostname  => "example.com",         # remote host 
+  :user      => "username",            # remote user
+  :sftp_opts => {},                    # options passed to Net::SFTP
+  :remote    => "test",                # remote directory
+  :debug     => true,                  # output debug information
+}
+
+group 'remote' do
+  guard 'remote', opts do
+    watch(/.*/)
+  end
+end
